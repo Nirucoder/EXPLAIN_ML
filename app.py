@@ -42,7 +42,7 @@ if uploaded_file is not None:
     plt.tight_layout()
     st.pyplot(fig)
     explainer=shap.TreeExplainer(model)
-    shap_values=explainer.shap_values(X_test)
+    shap_values=explainer.shap_values(X_test, check_additivity=False)
     st.subheader("Global Model Explanation")
     shap.summary_plot(shap_values,X_test,show=False)
     fig2=plt.gcf()
